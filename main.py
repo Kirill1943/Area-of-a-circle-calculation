@@ -1,4 +1,5 @@
 import math
+from time import sleep
 
 print('-' * 30)
 print('программа расчета периметра и площади круга: ')
@@ -15,6 +16,11 @@ try:
     print(f'площадь: {ploshad} дециметров')
     print('-' * 30)
 except ValueError:
+    print('-' * 30)
     print('вы вели не число!')
+    print('-' * 30)
 except Exception as e:
     print(f'неожиданная ошибка: {e}')
+
+while True:
+    sleep(1)
