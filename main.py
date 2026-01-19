@@ -1,4 +1,5 @@
 import периметр_и_площадь
+import math
 
 while True:
     primer = input('введите операцию (площадь - вычисление периметра и площади, + = сложение, - = вычитание, * = умножение): ')
@@ -27,5 +28,10 @@ while True:
             print('деление на ноль!')
         else:
             print(f'частное: {int1 / int2}')
+    elif primer == 'степень':
+        int1 = float(input('1 число: '))
+        int2 = float(input('2 число: '))
+
+        print(f'степень чисел: {math.pow(int1, int2)}')
     else:
         print(f'операция {primer} не распознана')
