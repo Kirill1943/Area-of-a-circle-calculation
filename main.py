@@ -1,26 +1,29 @@
 import math
 from time import sleep
+import sys
 
 print('-' * 30)
 print('программа расчета периметра и площади круга: ')
 print('-' * 30)
 
+radius = input('введите радиус круга в дециметрах: ')
 
-try:
-    radius = float(input('введите радиус круга в дециметрах: '))
-    perimetr = 2 * math.pi * radius
-    ploshad = math.pi * math.pow(radius, 2)
+def Calculations(n):
+    n = float(n)
+    perimetr = 2 * math.pi * n
+    ploshad = math.pi * math.pow(n, 2)
+    return [perimetr, ploshad]
 
+if not radius.isdigit():
+    print('вы ввели не число!')
     print('-' * 30)
-    print(f'периметр: {perimetr} дециметров')
-    print(f'площадь: {ploshad} дециметров')
+    sys.exit(0)
+else:
+    radius = float(radius)
+    print(f'периметр: {Calculations(radius)[0]:.3f} дециметров')
+    print(f'площадь: {Calculations(radius)[1]:.3f} дециметров')
     print('-' * 30)
-except ValueError:
-    print('-' * 30)
-    print('вы вели не число!')
-    print('-' * 30)
-except Exception as e:
-    print(f'неожиданная ошибка: {e}')
+
 
 while True:
     sleep(1)
