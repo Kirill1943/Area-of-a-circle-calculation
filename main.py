@@ -1,6 +1,31 @@
-from . import периметр_и_площадь as площадь_
+import периметр_и_площадь
 
 while True:
-    primer = input('введите операцию (площадь - вычисление периметра и площади): ')
+    primer = input('введите операцию (площадь - вычисление периметра и площади, + = сложение, - = вычитание, * = умножение): ')
     if primer == 'площадь':
-        площадь_.main()
+        периметр_и_площадь.main()
+    elif primer == '+':
+        int1 = float(input('введите 1 число: '))
+        int2 = float(input('введите 2 число: '))
+
+        print(f'сумма: {int1 + int2}')
+    elif primer == '-':
+        int1 = float(input('введите 1 число: '))
+        int2 = float(input('введите 2 число: '))
+
+        print(f'разность: {int1 - int2}')
+    elif primer == '*':
+        int1 = float(input('введите 1 число: '))
+        int2 = float(input('введите 2 число: '))
+
+        print(f'произведение: {int1 * int2}')
+    elif primer == '/':
+        int1 = float(input('введите 1 число (не 0!): '))
+        int2 = float(input('введите 2 число (не 0!): '))
+
+        if int2 == 0.0:
+            print('деление на ноль!')
+        else:
+            print(f'частное: {int1 / int2}')
+    else:
+        print(f'операция {primer} не распознана')
