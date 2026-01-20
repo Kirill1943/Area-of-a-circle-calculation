@@ -1,63 +1,53 @@
 import math
 
-def main():
-    def Calculations(n, figura, storon1: float = 1, storon2: int = 1, storon3: int = 1):
-        if figura == 'круг':
-            n = float(n)
-            perimetr = 2 * math.pi * n
-            ploshad = math.pi * math.pow(n, 2)
-            return [perimetr, ploshad]
-        elif figura == 'квадрат':
-            n = float(n)
-            perimetr = n * 4
-            ploshad = n * n
-            return [perimetr, ploshad]
-        elif figura == 'треугольник':
-            n = float(n)
-
-            perimetr = storon1 + storon2 + storon3
-            polyperimetr = perimetr / 2
-            ploshad = math.sqrt(polyperimetr * (polyperimetr - storon1) * (polyperimetr - storon2) * (polyperimetr - storon3))
-            
-            return [perimetr, ploshad]
-
-    print('-' * 30)
-    print('программа расчета периметра и площади: ')
-    print('-' * 30)
-    figura = input('введите площадь и периметр какой фигуры вы хотите расчитать (круг или квадрат, или треугольник): ')
+def Calculations(figura, a=0, b=0, c=0):
     if figura == 'круг':
-        radius = input('введите радиус круга в дециметрах: ')
-        if not radius.isdigit():
-            print('вы ввели не число!')
-            print('-' * 30)
-            return
-        else:
-            radius = float(radius)
-            print(f'периметр круга: {Calculations(radius, 'круг')[0]:.3f} дециметров')
-            print(f'площадь круга: {Calculations(radius, 'круг')[1]:.3f} дециметров')
-            print('-' * 30)
+        perimetr = 2 * math.pi * a
+        ploshad = math.pi * (a ** 2)
+        return perimetr, ploshad
     elif figura == 'квадрат':
-        radius = input('введите длину стороны квадрата в дециметрах: ')
-        if not radius.isdigit():
-            print('вы ввели не число!')
-            print('-' * 30)
-            return
-        else:
-            radius = float(radius)
-            print(f'периметр квадрата: {Calculations(radius, 'квадрат')[0]:.3f} дециметров')
-            print(f'площадь квадрата: {Calculations(radius, 'квадрат')[1]:.3f} дециметров')
-            print('-' * 30)
+        perimetr = a * 4
+        ploshad = a * a
+        return perimetr, ploshad
     elif figura == 'треугольник':
+        perimetr = a + b + c
+        p = perimetr / 2
+        # Формула Герона
+        ploshad = math.sqrt(p * (p - a) * (p - b) * (p - c))
+        return perimetr, ploshad
 
-        s1 = input('1 сторона в дециметрах: ')
-        s2 = input('2 сторона в дециметрах: ')
-        s3 = input('3 сторона в дециметрах: ')
-        if not (s1.isdigit and s2.isdigit and s3.isdigit):
-            print('где-то вы ввели не число!')
-            print('-' * 30)
-            return
+def main():
+    print('-' * 30)
+    print('Программа расчета периметра и площади:')
+    print('-' * 30)
+    figura = input('Введите фигуру (круг, квадрат, треугольник): ').lower()
+
+    try:
+        if figura == 'круг':
+            r = float(input('Введите радиус (дм): '))
+            p, s = Calculations('круг', a=r)
+            print(f'Периметр: {p:.3f} дм\nПлощадь: {s:.3f} дм²')
+
+        elif figura == 'квадрат':
+            a = float(input('Введите сторону (дм): '))
+            p, s = Calculations('квадрат', a=a)
+            print(f'Периметр: {p:.3f} дм\nПлощадь: {s:.3f} дм²')
+
+        elif figura == 'треугольник':
+            s1 = float(input('1-я сторона: '))
+            s2 = float(input('2-я сторона: '))
+            s3 = float(input('3-я сторона: '))
+            
+            # Проверка существования треугольника
+            if s1 + s2 > s3 and s1 + s3 > s2 and s2 + s3 > s1:
+                p, s = Calculations('треугольник', a=s1, b=s2, c=s3)
+                print(f'Периметр: {p:.3f} дм\nПлощадь: {s:.3f} дм²')
+            else:
+                print("Треугольник с такими сторонами не существует!")
         else:
-            radius = float(radius)
-            print(f'периметр круга: {Calculations(radius, 'круг', storon1=s1, storon2=s2, storon3=s3)[0]:.3f} дециметров')
-            print(f'площадь круга: {Calculations(radius, 'круг', storon1=s1, storon2=s2, storon3=s3)[1]:.3f} дециметров')
-            print('-' * 30)
+            print("Неизвестная фигура")
+    except ValueError:
+        print("Ошибка: введите числовое значение!")
+    
+    print('-' * 30)
+
