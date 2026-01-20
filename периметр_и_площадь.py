@@ -15,12 +15,17 @@ def Calculations(figura, a=0, b=0, c=0):
         # Формула Герона
         ploshad = math.sqrt(p * (p - a) * (p - b) * (p - c))
         return perimetr, ploshad
+    elif figura == 'прямоугольник':
+        perimetr = (a + b) * 2
+        ploshad = a * b
+
+        return perimetr, ploshad
 
 def main():
     print('-' * 30)
     print('Программа расчета периметра и площади:')
     print('-' * 30)
-    figura = input('Введите фигуру (круг, квадрат, треугольник): ').lower()
+    figura = input('Введите фигуру (круг, квадрат, треугольник, прямоугольник): ').lower()
 
     try:
         if figura == 'круг':
@@ -44,10 +49,19 @@ def main():
                 print(f'Периметр: {p:.3f} дм\nПлощадь: {s:.3f} дм²')
             else:
                 print("Треугольник с такими сторонами не существует!")
+        elif figura == 'прямоугольник':
+            s1 = float(input('1 сторона: '))
+            s2 = float(input('2 сторона: '))
+
+            print(f'Периметр: дм {Calculations('прямоугольник', a=s1, b=s2)[0]:.3f}\nплощадь: {Calculations('прямоугольник', a=s1, b=s2)[1]:.3f} дм²')
+
         else:
             print("Неизвестная фигура")
     except ValueError:
         print("Ошибка: введите числовое значение!")
     
     print('-' * 30)
+
+if __name__ == '__main__':
+    main()
 
