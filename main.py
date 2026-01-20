@@ -35,7 +35,3 @@ while True:
         print(f'степень чисел: {math.pow(int1, int2)}')
     else:
         print(f'операция {primer} не распознана')
-
-        print(f'степень чисел: {math.pow(int1, int2)}')
-    else:
-        print(f'операция {primer} не распознана')
