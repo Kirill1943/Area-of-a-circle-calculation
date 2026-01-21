@@ -9,7 +9,8 @@ while True:
 = вычитание, 
 * = умножение, 
 степень - степени, 
-рандом - рандом): 
+рандом - рандом
+e или exit - выход): 
 ''')
     if primer == 'площадь':
         периметр_и_площадь.main()
@@ -45,6 +46,12 @@ while True:
         min_ = input('минимальное число: ')
         max_ = input('максимальное число: ')
 
+        min_ = min(min_, max_)
+        max_ = max(min_, max_)
+
         print(random.randint(int(min_), int(max_)))
+    elif primer == 'e' or primer == 'exit':
+        print('выход...')
+        break
     else:
-        print(f'операция {primer} не распознана')
+        print(f'операция \'{primer}\' не распознана')
