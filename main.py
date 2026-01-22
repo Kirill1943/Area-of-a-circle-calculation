@@ -1,4 +1,4 @@
-import периметр_и_площадь
+import периметр_и_площадь, ports
 import math, random
 
 while True:
@@ -10,7 +10,8 @@ while True:
 * = умножение, 
 степень - степени, 
 рандом - рандом
-e или exit - выход): 
+e или exit - выход
+порты - просматривать статусы портов localhost): 
 ''')
     if primer == 'площадь':
         периметр_и_площадь.main()
@@ -50,8 +51,19 @@ e или exit - выход):
         max_ = max(min_, max_)
 
         print(random.randint(int(min_), int(max_)))
+    
     elif primer == 'e' or primer == 'exit':
         print('выход...')
         break
+    elif primer == 'порты':
+        min__ = int(input('введите минимальный порт: '))
+        max__ = int(input('введите максимальный порт: '))
+        sleeping = input('скорость ожидания (рекомендуется не сменять) (по умолчанию 0.1): ')
+        if sleeping == '':
+            pass
+        else:
+            sleeping = float(sleeping)
+
+        ports.main(min__, max__, sleeping)
     else:
         print(f'операция \'{primer}\' не распознана')
