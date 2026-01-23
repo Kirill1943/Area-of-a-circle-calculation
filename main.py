@@ -11,7 +11,8 @@ while True:
 степень - степени, 
 рандом - рандом
 e или exit - выход
-порты - просматривать статусы портов localhost): 
+порты - просматривать статусы портов localhost
+ip сайта - просмотреть ip-адрес сайта): 
 ''')
     if primer == 'площадь':
         периметр_и_площадь.main()
@@ -64,6 +65,9 @@ e или exit - выход
         else:
             sleeping = float(sleeping)
 
-        ports.main(min__, max__, sleeping)
+        ports.main_scan(min__, max__, sleeping)
+    elif primer == 'ip сайта':
+        a = input('введите название сайта: ')
+        ports.main_dns(a)
     else:
         print(f'операция \'{primer}\' не распознана')
