@@ -1,9 +1,10 @@
 {
     "user": "kirill",
     "version": "1.5.5",
-    "start": 591,
+    "start": 0,
     "color": {
         "fon": "#ff6600",
         "text": "#ff0000"
     }
+
 }
