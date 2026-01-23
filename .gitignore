@@ -1,2 +1,6 @@
 # чтобы наверняка не было кеша python
-__pycache__
+__pycache__/
+*.dll
+*.exe
+dist/
+burld/
